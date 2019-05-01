@@ -27,7 +27,8 @@ model.add(Flatten(input_shape=(img_width, img_height)))
 model.add(Dense(num_classes, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam',
               metrics=['accuracy'])
-
+#categorical_crossentropy for multi-class classification. binary-crossentropy for binary classification
+#softmax is a special kind of sigmoid where outputs are between 0 and 1 and adds up to one (models propbability)
 # Fit the model
 model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test),
           callbacks=[WandbCallback(data_type="image", labels=labels, save_model=False)])

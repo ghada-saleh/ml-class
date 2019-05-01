@@ -16,7 +16,7 @@ img_width = X_train.shape[1]
 img_height = X_train.shape[2]
 
 # one hot encode outputs
-y_train = to_categorical(y_train)
+y_train = to_categorical(y_train) #60000x10 vector
 y_test = to_categorical(y_test)
 labels = range(10)
 
@@ -25,7 +25,7 @@ num_classes = y_train.shape[1]
 # create model
 model = Sequential()
 model.add(Flatten(input_shape=(img_width, img_height)))
-model.add(Dense(num_classes))
+model.add(Dense(num_classes, activation = 'sigmoid'))#10 perceptrons, 
 model.compile(loss='mse', optimizer='adam',
               metrics=['accuracy'])
 

@@ -22,11 +22,11 @@ img_height = X_train.shape[2]
 # create model
 model = Sequential()
 model.add(Flatten(input_shape=(img_width, img_height))) #convert the matrix into vector data, vould've used reshape to do this step
-model.add(Dense(1)) #Add single preceptron to model one output, dense: means use the preceptron algorithm
+model.add(Dense(1,activation = 'sigmoid')) #Add single preceptron to model one output, dense: means use the preceptron algorithm
 model.compile(loss='mse', optimizer='adam',
               metrics=['accuracy'])
 
 # Fit the model
-model.fit(X_train, is_five_train, epochs=3, validation_data=(X_test, is_five_test),
+model.fit(X_train, is_five_train, epochs=6, validation_data=(X_test, is_five_test),
           callbacks=[WandbCallback(data_type="image", labels=labels, save_model=False)])
 model.save('perceptron.h5')
