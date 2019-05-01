@@ -21,8 +21,8 @@ img_height = X_train.shape[2]
 
 # create model
 model = Sequential()
-model.add(Flatten(input_shape=(img_width, img_height)))
-model.add(Dense(1))
+model.add(Flatten(input_shape=(img_width, img_height))) #convert the matrix into vector data, vould've used reshape to do this step
+model.add(Dense(1)) #Add single preceptron to model one output, dense: means use the preceptron algorithm
 model.compile(loss='mse', optimizer='adam',
               metrics=['accuracy'])
 
